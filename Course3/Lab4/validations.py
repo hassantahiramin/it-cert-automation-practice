@@ -21,4 +21,17 @@ def validate_user(username, minlen):
     return True
 
 
+print(validate_user("blue.kale", 3)) # True
+print(validate_user(".blue.kale", 3)) # Currently True, should be False
+print(validate_user("red_quinoa", 4)) # True
+print(validate_user("_red_quinoa", 4)) # Currently True, should be False
 
+def check_passwords(passwords):
+    forbidden_chars = ["'", '"', "\\"]
+    valid_passwords = []
+    for password in passwords:
+        if password[0] in forbidden_chars:
+            continue
+        if len(password) >= 5 and any(char.isdigit() for char in password):
+            valid_passwords.append(password)
+    return valid_passwords
